@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .form-container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input[type="text"], 
+        .form-group input[type="email"], 
+        .form-group select {
+            width: 100%;
+            padding: 8px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .form-group .checkbox-group {
+            margin-top: 5px;
+        }
+        .form-group button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <div class="form-group">
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" required>
+    </div>
+    <div class="form-group">
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" required>
+    </div>
+    <div class="form-group">
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" required>
+    </div>
+    <div class="form-group">
+        <label for="country">Country:</label>
+        <select id="country" required>
+            <option value="">Select Country</option>
+            <option value="india">india</option>
+            <option value="Canada">Canada</option>
+            <option value="USA">USA</option>
+            <option value="england">england</option>
+            <!-- Add more countries as needed -->
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Gender:</label>
+        <div class="radio">
+            <input type="radio" name="Gender" id="male"> <label for="male">Male</label>
+            <input type="radio" name="Gender" id="female"> <label for="female">Female</label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="profession">Profession:</label>
+        <input type="text" id="profession" required>
+    </div>
+    <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" required>
+    </div>
+    <div class="form-group">
+        <label for="mobileNumber">Mobile Number:</label>
+        <input type="tel" id="mobileNumber" required>
+    </div>
+    <div class="form-group">
+        <button onclick="submitForm()">Submit</button>
+        <button onclick="resetForm()">Reset</button>
+    </div>
+</div>
+
+<script>
+    function submitForm() {
+        var firstName = document.getElementById("firstName").value;
+        var lastName = document.getElementById("lastName").value;
+        var dob = document.getElementById("dob").value;
+        var country = document.getElementById("country").value;
+        var gender = document.getElementById("male").checked ? "Male" : "Female";
+        var profession = document.getElementById("profession").value;
+        var email = document.getElementById("email").value;
+        var mobileNumber = document.getElementById("mobileNumber").value;
+
+        // Validate all fields
+        if (firstName && lastName && dob && country && profession && email && mobileNumber) {
+            var message = "First Name: " + firstName + "\n" +
+                          "Last Name: " + lastName + "\n" +
+                          "Date of Birth: " + dob + "\n" +
+                          "Country: " + country + "\n" +
+                          "Gender: " + gender + "\n" +
+                          "Profession: " + profession + "\n" +
+                          "Email: " + email + "\n" +
+                          "Mobile Number: " + mobileNumber;
+
+            // Display popup with selected values
+            alert(message);
+
+            // Reset the form
+            resetForm();
+        } else {
+            alert("Please fill out all the fields before submitting the form.");
+        }
+    }
+
+    function resetForm() {
+        // Reset all form fields
+        document.getElementById("firstName").value = "";
+        document.getElementById("lastName").value = "";
+        document.getElementById("dob").value = "";
+        document.getElementById("country").value = "";
+        document.getElementById("male").checked = false;
+        document.getElementById("female").checked = false;
+        document.getElementById("profession").value = "";
+        document.getElementById("email").value = "";
+        document.getElementById("mobileNumber").value = "";
+    }
+</script>
+
+</body>
+</html>
